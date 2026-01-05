@@ -1,0 +1,25 @@
+# Data handling
+pandas
+numpy
+pyarrow   # needed to read parquet files
+
+# Plotting
+matplotlib
+seaborn
+
+# Text processing
+nltk
+regex  # better regex support for text cleaning
+
+# Machine learning / embeddings 
+scikit-learn
+
+# For future AI/LLM usage 
+openai
+
+tiktoken
+chromadb
+langchain
+
+sentence-transformers
+faiss-cpu
