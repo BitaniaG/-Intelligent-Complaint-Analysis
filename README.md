@@ -10,7 +10,6 @@ Financial institutions receive thousands of consumer complaints every day. Hidde
 This project builds the foundation of a Retrieval-Augmented Generation (RAG) system by transforming raw consumer complaint narratives into a semantic search–ready vector database. The result is a clean, reproducible pipeline that prepares complaint data for downstream applications such as chatbots, question-answering systems, and analytics tools.
 
 The work is divided into two main stages:
-
 Exploratory Data Analysis & Preprocessing
 Text Chunking, Embedding, and Vector Store Indexing
 
@@ -41,14 +40,10 @@ weel-7/
 
 This structure separates logic (src/) from execution (notebooks/), ensuring clarity, reusability, and reproducibility.
 
-
 🧪 Task 1: Exploratory Data Analysis & Preprocessing
 
 🎯 Objective
 Understand the structure and quality of the CFPB complaint data and prepare it for semantic embedding.
-
-
-
 
 🧩 Task 2: Text Chunking, Embedding, and Vector Store Indexing
 
@@ -66,11 +61,10 @@ This prevents dominant products from overshadowing smaller categories.
 Long complaint narratives were split into smaller, overlapping chunks to improve embedding quality.
 
 Implemented using:
-
 Custom chunking logic (fallback-safe)
 Optional LangChain RecursiveCharacterTextSplitter
-Final configuration:
 
+Final configuration:
 chunk_size: balances semantic coherence
 chunk_overlap: preserves contextual continuity
 Chunking logic lives in src/chunking.py.
@@ -79,7 +73,6 @@ Chunking logic lives in src/chunking.py.
 Model used: sentence-transformers/all-MiniLM-L6-v2
 
 Why this model?
-
 Strong semantic performance
 Lightweight and fast
 Well-suited for sentence-level embeddings
@@ -90,8 +83,8 @@ Embedding loading is handled in src/embeddings.py.
 Generated embeddings for each text chunk.
 Stored vectors using FAISS (or ChromaDB as a fallback).
 Persisted the vector store to disk.
-Each vector includes metadata, such as:
 
+Each vector includes metadata, such as:
 Complaint ID
 Product category
 Chunk index
@@ -101,7 +94,6 @@ Indexing logic is implemented in src/vector_store.py.
 
 ♻️ Reproducibility & Robustness
 This project was designed to be robust and reproducible:
-
 ✅ Central configuration in src/config.py
 ✅ Fixed random seeds for sampling
 ✅ Input validation with clear error messages
@@ -111,13 +103,12 @@ All modules are orchestrated from a single notebook, ensuring clarity while main
 
 🚀 How to Run
 Install dependencies:
-
 pip install -r requirements.txt
+
 Run notebooks :
-
 notebooks/task2_pipeline.ipynb
-The persisted vector store will be available in:
 
+The persisted vector store will be available in:
 vector_store/
 
 🌱 Future Work
