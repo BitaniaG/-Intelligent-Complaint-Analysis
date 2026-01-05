@@ -13,9 +13,10 @@ The work is divided into two main stages:
 
 Exploratory Data Analysis & Preprocessing
 Text Chunking, Embedding, and Vector Store Indexing
+
 🗂 Project Structure
 
-week-7/
+weel-7/
 │
 ├── data/
 │   ├── raw/                     # Original CFPB complaint dataset
@@ -34,78 +35,23 @@ week-7/
 │   └── vector_store.py          # FAISS/ChromaDB indexing logic
 │
 ├── vector_store/                # Persisted vector database
+├── visualizations               # stores the plot visualization 
 ├── requirements.txt
 └── README.md
-└── .gitignore 
-└──visualizations/               # stores plot visualizations 
+
 This structure separates logic (src/) from execution (notebooks/), ensuring clarity, reusability, and reproducibility.
 
+
 🧪 Task 1: Exploratory Data Analysis & Preprocessing
+
 🎯 Objective
+Understand the structure and quality of the CFPB complaint data and prepare it for semantic embedding.
 
-Understand the structure, quality, and limitations of the CFPB complaint dataset and prepare clean, high-quality textual data suitable for semantic embedding and downstream RAG tasks.
 
-🔍 Key Steps
-Dataset Loading (Memory-Safe)
 
-Due to the large size of the CFPB dataset, the data was processed using chunk-based loading to avoid memory exhaustion.
-
-Column names were first discovered by loading only the file header.
-
-Small row samples were loaded to safely inspect data values and quality without loading the full dataset into memory.
-
-Initial EDA
-
-Inspected available product categories using sampled data.
-
-Verified the column containing consumer complaint narratives.
-
-Analyzed the presence and absence of complaint narratives to confirm data usability.
-
-Identified common data quality issues such as redacted values and boilerplate phrases.
-
-Narrative Length Analysis
-
-Calculated word counts on sampled narratives to assess text length distribution.
-
-Confirmed the existence of:
-
-Very short narratives with low informational value.
-
-Very long narratives that would require chunking for effective embedding.
-
-These findings directly informed chunking decisions in Task 2.
-
-Filtering
-
-Retained complaints mapped to the five business-relevant financial product categories defined in the challenge.
-
-Removed records with missing or empty complaint narratives.
-
-Filtering was performed incrementally during chunked reads to ensure scalability.
-
-Text Cleaning & Normalization
-
-Normalized redacted patterns (e.g., XXXX → <REDACTED>) to reduce meaningless token repetition.
-
-Converted all text to lowercase for consistency.
-
-Removed common boilerplate complaint phrases that add no semantic value.
-
-Removed non-informative special characters while preserving meaningful tokens.
-
-Normalized whitespace to ensure clean, uniform text.
-
-Performed manual sanity checks to ensure semantic meaning was preserved.
-
-📦 Output
-
-The final cleaned and filtered dataset produced in Task 1 is saved as:
-data/processed/filtered_complaints.csv
-
-This dataset serves as the single source of truth for downstream sampling, chunking, embedding, and vector indexing tasks in the RAG pipeline.
 
 🧩 Task 2: Text Chunking, Embedding, and Vector Store Indexing
+
 🎯 Objective
 Convert cleaned complaint narratives into a format suitable for efficient semantic search.
 
@@ -165,17 +111,20 @@ All modules are orchestrated from a single notebook, ensuring clarity while main
 
 🚀 How to Run
 Install dependencies:
+
 pip install -r requirements.txt
+Run notebooks :
 
-Run notebooks:
 notebooks/task2_pipeline.ipynb
-
 The persisted vector store will be available in:
+
 vector_store/
+
 🌱 Future Work
 Integrate a RAG chatbot interface (Gradio or Streamlit)
 Add evaluation for retrieval quality
 Experiment with larger embedding models
 Support real-time complaint ingestion
+
 ✨ Closing Note
 This project lays a strong, thoughtful foundation for intelligent complaint analysis. Each step—EDA, cleaning, sampling, chunking, embedding, and indexing—was designed with care, clarity, and purpose.
