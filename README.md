@@ -238,6 +238,45 @@ Once launched, the app is accessible at:
 
 http://localhost:8501
 
+final folder structure:
+week-7/
+├── .github/
+│   └── workflows/
+│       └── unittests.yml
+├── app/
+│   └── app.py
+├── data/
+│   ├── processed/
+│   │   ├── complaints_sampled.csv
+│   │   └── filtered_complaints.csv
+│   ├── raw/
+│   │   └── complaints.csv
+│   └── sampled_complaints.csv
+├── notebooks/
+│   ├── task1_eda_preprocessing.ipynb
+│   ├── task2_pipeline.ipynb
+│   ├── task3_evaluation.ipynb
+│   ├── task3_rag_pipeline.ipynb
+│   └── task4_streamlit.ipynb
+├── src/
+│   ├── generation/
+│   │   └── generator.py
+│   ├── rag/
+│   │   └── rag_pipeline.py
+│   ├── retrieval/
+│   │   └── retriever.py
+│   ├── chunking.py
+│   ├── config.py
+│   ├── embeddings.py
+│   ├── preprocessing.py
+│   ├── sampling.py
+│   ├── utils.py
+│   └── vector_store.py
+├── vector_db/
+├── .gitignore
+├── README.md
+└── requirements.txt
+
 ✅ Outcome
 
 The interactive interface successfully demonstrates how a RAG-powered system can transform raw complaint data into actionable organizational intelligence, supporting faster decision-making and improved insight discovery.
